@@ -17,11 +17,11 @@ class User:
     def get_borrowed_books(self):
         return self.__borrowed_books
 
-    def can_borrow_book(self, book):
-        return len(self.__borrowed_books) < 5 and not book.is_borrowed()
+    def can_borrow(self, book):
+        return len(self.__borrowed_books) < 5 and not book.get_is_borrowed()
 
     def borrow_book(self, book):
-        if self.can_borrow_book(self):
+        if self.can_borrow(self):
             self.__borrowed_books.append(book)
             book.set_is_borrowed(True)
 
