@@ -61,6 +61,10 @@ def main():
     for book in my_library.get_staff()[0].get_borrowed_books():
         print(book.get_title())
 
+    # --- Test method overloading
+    print(my_library.get_staff()[0].get_first_name("1", "2", "3"))
+    print(my_library.get_staff()[0].get_email_address(True))
+
 
 if __name__ == '__main__':
     main()
