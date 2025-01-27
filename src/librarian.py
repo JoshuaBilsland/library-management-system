@@ -2,8 +2,8 @@ from user import User
 
 
 class Librarian(User):
-    def __init__(self, employee_id):
-        super().__init__()
+    def __init__(self, first_name, surname, email, employee_id):
+        super().__init__(first_name, surname, email)
         self.__employee_id = employee_id
 
     def can_borrow(self, book):
