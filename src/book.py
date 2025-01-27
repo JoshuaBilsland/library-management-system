@@ -10,7 +10,7 @@ class Book:
     def get_author(self):
         return self.__author
 
-    def is_borrowed(self):
+    def get_is_borrowed(self):
         return self.__is_borrowed
 
     def set_is_borrowed(self, boolean):

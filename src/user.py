@@ -21,7 +21,7 @@ class User:
         return len(self.__borrowed_books) < 5 and not book.get_is_borrowed()
 
     def borrow_book(self, book):
-        if self.can_borrow(self):
+        if self.can_borrow(book):
             self.__borrowed_books.append(book)
             book.set_is_borrowed(True)
 

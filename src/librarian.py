@@ -7,4 +7,5 @@ class Librarian(User):
         self.__employee_id = employee_id
 
     def can_borrow(self, book):
+        """Method overriding example"""
         return not book.get_is_borrowed()

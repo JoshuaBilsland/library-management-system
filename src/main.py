@@ -5,7 +5,7 @@ from librarian import Librarian
 
 
 def main():
-    # Set up the system
+    # Setup the system
     my_library = Library()
     book_one = Book("The Great Gatsby", "F. Scott Fitzgerald")
     book_two = Book("To Kill a Mockingbird", "Harper Lee")
@@ -25,6 +25,41 @@ def main():
     my_library.add_user(user_one)
     my_library.add_user(user_two)
     my_library.add_staff(staff_one)
+
+    # Test accessing user vs staff information
+    print(my_library.get_users()[0].get_first_name())
+    print(my_library.get_staff()[0].get_first_name())
+
+    # Test borrowing books
+    # --- Test if same book can't be borrowed by multiple users
+    my_library.get_users()[0].borrow_book(my_library.get_books()[0])
+    my_library.get_users()[1].borrow_book(my_library.get_books()[0])
+    print(my_library.get_users()[0].get_borrowed_books())
+    print(my_library.get_users()[1].get_borrowed_books())
+
+    # --- Test that user can't borrow more than 5 books
+    my_library.get_users()[0].borrow_book(my_library.get_books()[1])
+    my_library.get_users()[0].borrow_book(my_library.get_books()[2])
+    my_library.get_users()[0].borrow_book(my_library.get_books()[3])
+    my_library.get_users()[0].borrow_book(my_library.get_books()[4])
+    my_library.get_users()[0].borrow_book(my_library.get_books()[5])
+    print(my_library.get_users()[0].get_borrowed_books())
+
+    # --- Test if staff can borrow more than 5 books
+    my_library.get_users()[0].return_book(my_library.get_books()[0])
+    my_library.get_users()[0].return_book(my_library.get_books()[1])
+    my_library.get_users()[0].return_book(my_library.get_books()[2])
+    my_library.get_users()[0].return_book(my_library.get_books()[3])
+    my_library.get_users()[0].return_book(my_library.get_books()[4])
+
+    my_library.get_staff()[0].borrow_book(my_library.get_books()[0])
+    my_library.get_staff()[0].borrow_book(my_library.get_books()[1])
+    my_library.get_staff()[0].borrow_book(my_library.get_books()[2])
+    my_library.get_staff()[0].borrow_book(my_library.get_books()[3])
+    my_library.get_staff()[0].borrow_book(my_library.get_books()[4])
+    my_library.get_staff()[0].borrow_book(my_library.get_books()[5])
+    for book in my_library.get_staff()[0].get_borrowed_books():
+        print(book.get_title())
 
 
 if __name__ == '__main__':
